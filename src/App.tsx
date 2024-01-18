@@ -1,16 +1,19 @@
 import { useState } from 'react'
-import './Components/Dropdown'
 import './index.css'
-import Dropdown from './Components/Dropdown'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const[zipcode, setZipcode] = useState('')
 
   return (
     <>
-      <div className="bg-red-300 max-w-sm flex content-center mx-auto" >
-        <Dropdown></Dropdown>
-      </div>
+      <form>
+        <label>
+          Please enter a zip code:
+          <input name="zipCode" />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
     </>
   )
 }
