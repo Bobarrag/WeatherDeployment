@@ -10,9 +10,12 @@ function App() {
       <form>
         <label>
           Please enter a zip code:
-          <input name="zipCode" />
+          <input name={zipcode} onChange={e=>setZipcode(e.target.value)} />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button> 
+        <p>
+          {zipcode}
+        </p>
       </form>
     </>
   )
