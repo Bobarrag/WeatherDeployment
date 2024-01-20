@@ -19,19 +19,21 @@ app.get("/", async function (req, res) {
 
 app.post("/:zipcode", async (req, res) => {
   const { zipcode } = req.params;
-  if (!zipcode) {
-    return res.status(400).send({ status: "failed" });
-  }
+  const coords = await getCoordinates(zipcode);
+  res.send(coords);
+});
+
+async function getCoordinates(zipcode) {
   const apiKey = process.env.GOOGLE_MAPS_API_KEY;
 
-  const resultObj = await axios.get(
+  const res = await axios.get(
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
       zipcode +
       "&key=" +
       apiKey
   );
-  console.log(JSON.stringify(resultObj.data.results.geometry));
-  res.send(resultObj.data.results);
-});
+  const coordinates = res.data.data.results;
+  return coordinates;
+}
 
 app.listen(process.env.PORT || 3001);
