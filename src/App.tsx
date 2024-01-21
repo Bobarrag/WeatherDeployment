@@ -4,7 +4,7 @@ import './index.css'
 
 function App() {
 
-  const baseUrl = 'http://localhost:3001/'
+  const baseUrl = import.meta.env.VITE_BACKEND_ADDRESS;
   const[zipcode, setZipcode] = useState('');
   const[weather, setWeather] = useState<WeatherData | null>(null);
 
