@@ -1,10 +1,12 @@
 FROM node:12 AS build
-WORKDIR /srv
-ADD package.json .
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
 RUN npm install
 
-FROM node:12-alpine
-COPY --from=build /srv .
-ADD ./index.js index.js
+COPY . .
+
 EXPOSE 3001
-CMD ["node", "index.js"]
+
+CMD ["npm", "start"]
