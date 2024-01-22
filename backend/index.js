@@ -11,7 +11,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", process.env.FRONTEND_ADDRESS],
+    origin: [
+      "http://localhost:5173",
+      "http://weather-frontend-react.s3-website-us-east-1.amazonaws.com",
+    ],
   })
 );
 
