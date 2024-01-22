@@ -30,11 +30,11 @@ function App() {
     }
   return (
     <>
-      <div className={"bg-gray-800 h-24"}>
-
+      <div className={"bg-gray-800 h-24 flex ml-4"}>
+        
       </div>
-      <div className = {"flex mt-16 h-auto gap-60"}>
-        <form className = {"ml-24  w-96 flex flex-col gap-12"} onSubmit={(e) =>postZip(e)}>
+      <div className = {"flex ml-auto mr-auto mt-16 justify-between h-auto   w-8/12"}>
+        <form className = {" w-96 flex flex-col gap-12"} onSubmit={(e) =>postZip(e)}>
           <label className= {" text-white text-6xl leading-snug font-semibold"}>
             Please enter a 5 digit zip code:
             
@@ -46,7 +46,7 @@ function App() {
           </button> 
         </form>
 
-        <div className = "flex w-96 ">
+        <div className = "flex w-60 justify-center ">
         {weather && (     
         <>
           <p className = "text-white text-6xl leading-snug font-light">
