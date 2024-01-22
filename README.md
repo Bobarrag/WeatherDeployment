@@ -1,30 +1,11 @@
-# React + TypeScript + Vite
+# Weather UI Frontend + Deployment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To install, clone repository and run command "npm install" in root directory. If self-hosting backend, run "npm install" in "backend" directory as well.
 
-Currently, two official plugins are available:
+This project consists of a React frontend and a Node.js backend. 
+The Node.js backend code is being hosted on an AWS EC2 with ip available on request.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The frontend is a simple web page that takes in a 5 digit zip code and creates a POST request to the backend hosted in AWS.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+The Node.js backend takes a POST request to its url in addition to the requested zip code as a query. It then creates a GET request to the Google Geocode API which returns location data (note, if self-hosting backend code, a .env file will need to be created containing your Google API key).
+After the location data is fetched, the coordinates are then sent in a GET request to open-meteo.com, which returns a weather data object that is returned to the frontend.
