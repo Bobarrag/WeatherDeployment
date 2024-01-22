@@ -33,9 +33,9 @@ function App() {
       <div className={"bg-gray-800 h-24"}>
 
       </div>
-      <div className = {"flex h-auto"}>
-        <form className = {"ml-24 mt-16 w-96 flex flex-col gap-12"} onSubmit={(e) =>postZip(e)}>
-          <label className= {"text-xl text-white text-6xl leading-snug font-semibold"}>
+      <div className = {"flex mt-16 h-auto gap-60"}>
+        <form className = {"ml-24  w-96 flex flex-col gap-12"} onSubmit={(e) =>postZip(e)}>
+          <label className= {" text-white text-6xl leading-snug font-semibold"}>
             Please enter a 5 digit zip code:
             
           </label>
@@ -44,12 +44,18 @@ function App() {
             disabled={zipcode.length < 5}>
               Get Weather
           </button> 
-          {weather && (        
-          <p>
-            It is currently {weather.data.current.temperature_2m}° Fahrenheit
-          </p>)}
-
         </form>
+
+        <div className = "flex w-96 ">
+        {weather && (     
+        <>
+          <p className = "text-white text-6xl leading-snug font-light">
+            {weather.data.current.temperature_2m}°F
+          </p>
+        </>)
+        }
+
+        </div>
       </div>
     </>
   )
